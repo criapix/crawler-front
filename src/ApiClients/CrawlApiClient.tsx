@@ -1,4 +1,5 @@
-import ConsultaModel from "../models/ConsultaModel";
+import CrawlerModel from "../models/CrawlerModel";
+import ResultadoModel from "../models/ResultadoModel";
 
 const urlParte1 = 'test';
 const urlParte2 = 'app';
@@ -10,7 +11,7 @@ export default class CrawlApiClient {
 
     baseUrl = `http://${urlParte1}${urlParte2}.${urlParte3}${urlParte4}.com:3000`;
 
-    post(parametros: any): Promise<ConsultaModel> {
+    post(parametros: any): Promise<CrawlerModel> {
         var url = this.baseUrl + this.resource;
 
         const config = {
@@ -24,7 +25,7 @@ export default class CrawlApiClient {
 
         return fetch(url, config).then(response => response.json());
     }
-    getById(id: string): Promise<any> {
+    getById(id: string): Promise<ResultadoModel> {
         var self = this;
         var url = this.baseUrl + self.resource + '/' + id;
 

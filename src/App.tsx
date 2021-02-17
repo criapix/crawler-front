@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css';
-import Busca from './components/Busca/Index';
-import Resultado from './components/Resultado/Index';
+import CrawlerApp from './components/CrawlerApp/Index';
 
 function App() {
   return (
-    <div className="App">
-      <Busca />
-      <Resultado />
-    </div>
+    <CrawlerApp />
   );
 }
+
+
 
 export default App;
