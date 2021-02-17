@@ -8,6 +8,15 @@ export default class CrawlerStore {
         consultas.push(new CrawlerModel(id, keyword));
         this.setList(consultas);
     }
+    static updateItemStatus(id: string, status: string): void {
+        const consultas = this.list();
+        const consulta = consultas.find(c => c.id === id);
+
+        if (!consulta) return;
+
+        consulta.status = status;
+        this.setList(consultas);
+    }
 
     static deleteItem(consulta: CrawlerModel): void {
         const crawlers = this.list();
@@ -27,7 +36,7 @@ export default class CrawlerStore {
         return JSON.parse(valor) as CrawlerModel[];
     }
 
-    private static setList(consultas: CrawlerModel[]) {
+    static setList(consultas: CrawlerModel[]) {
         localStorage.setItem(storeKey, JSON.stringify(consultas));
     }
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CrawlApiClient from "../../ApiClients/CrawlApiClient";
 import CrawlerModel from "../../models/CrawlerModel";
 import CrawlerStore from "../../store/CrawlerStore";
 import ResultItem from "../ResultItem/Index";
@@ -12,10 +13,18 @@ const Result = ({ list }: ResultProps) => {
 
     useEffect(() => {
         setTimeout(() => {
+            const itens = CrawlerStore.list();
 
-
-            setInternalList(CrawlerStore.list());
-        }, 1000);
+            itens.forEach((i) => {
+                if (i.status === undefined || i.status === 'active') {
+                    new CrawlApiClient().getById(i.id).then((r) => {
+                        i.status = r.status;
+                        CrawlerStore.updateItemStatus(i.id, i.status);
+                    });
+                }
+            });
+            setInternalList(itens);
+        }, 10000);
     });
 
     return <div>

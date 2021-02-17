@@ -5,9 +5,9 @@ const Loading = () => {
     return (
         <Progress
             style={{
-                width: 40,
-                height: 40,
-                color: "var(--base-color-promary)"
+                width: 25,
+                height: 25,
+                color: "var(--base-color-primary)"
             }}
         />
     );
@@ -20,14 +20,10 @@ const Progress = styled.progress`
   box-sizing: border-box;
   border: none;
   border-radius: 50%;
-  padding: 0.25em;
-  width: 3em;
-  height: 3em;
-  /* color: var(--base-color-deep-orange); */
   background-color: transparent;
   font-size: 16px;
   overflow: hidden;
-  margin: 20px;
+  vertical-align: middle;
 
   &::-webkit-progress-bar {
     background-color: transparent;
