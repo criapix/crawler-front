@@ -11,9 +11,10 @@ overflow: hidden;
 
 export const StyledField = styled.input`
 border: none;
-font-size: 1.5em;
+font-size: 1.4em;
 padding: 6px 20px;
 vertical-align: middle;
+width: calc(100% - 150px);
 `;
 
 export const StyledButton = styled.button`
@@ -49,4 +50,5 @@ export const UrlsDisplay = styled.div`
 max-height: 150px;
 overflow: auto;
 margin: 0 10px 20px 10px;
+text-align: left;
 `;

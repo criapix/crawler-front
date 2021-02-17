@@ -14,7 +14,9 @@ const ResultItem = ({ crawler }: ResultItemProps) => {
 
 
     return <div>
-        <CrawlerDisplay onClick={() => { setClosed(!closed); }} > {crawler.keyword} {<IconDisplay>{crawler.status === 'done' ? <StyledIcon src={CheckIcon} alt="Done" height="25" /> : <Loading />}</IconDisplay>}</CrawlerDisplay>
+        <CrawlerDisplay onClick={() => { setClosed(!closed); }} > {crawler.keyword}
+            {<IconDisplay>{crawler.status === 'done' ? <StyledIcon src={CheckIcon} alt="Done" height="25" /> : <Loading />}</IconDisplay>}
+        </CrawlerDisplay>
         {closed ? '' : urlList(crawler.urls)}
     </div>
 }

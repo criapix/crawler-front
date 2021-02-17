@@ -12,7 +12,7 @@ const Form = ({ onSend }: FormProps) => {
 
     return (
         <StyledForm onSubmit={onSubmit}>
-            <StyledField type="text" placeholder="Digite o termo buscado" value={keyword} onChange={onChange} minLength={4} maxLength={32} required={true} />
+            <StyledField type="text" placeholder="palavra buscada" value={keyword} onChange={onChange} minLength={4} maxLength={32} required={true} />
             <StyledButton>Buscar</StyledButton>
         </StyledForm>
     );
@@ -41,7 +41,7 @@ const Form = ({ onSend }: FormProps) => {
         var crawlers = CrawlerStore.list();
 
         if (crawlers.some(c => c.keyword === keyword)) {
-            alert("Termo buscado já inserido anteriormente");
+            alert("Palavra buscada já inserida anteriormente");
             return false;
         }
 
