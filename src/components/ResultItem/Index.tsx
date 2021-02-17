@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CrawlerModel from "../../models/CrawlerModel";
 import Loading from "../Loading/Index";
 import CheckIcon from "../../assets/check.svg";
-import { CrawlerDisplay, UrlsDisplay } from "../../styled/Index";
+import { CrawlerDisplay, IconDisplay, StyledIcon, UrlsDisplay } from "../../styled/Index";
 
 
 interface ResultItemProps {
@@ -14,7 +14,7 @@ const ResultItem = ({ crawler }: ResultItemProps) => {
 
 
     return <div>
-        <CrawlerDisplay onClick={() => { setClosed(!closed); }} > {crawler.keyword} {crawler.status === 'done' ? <img src={CheckIcon} alt="Done" height="25" /> : <Loading />}</CrawlerDisplay>
+        <CrawlerDisplay onClick={() => { setClosed(!closed); }} > {crawler.keyword} {<IconDisplay>{crawler.status === 'done' ? <StyledIcon src={CheckIcon} alt="Done" height="25" /> : <Loading />}</IconDisplay>}</CrawlerDisplay>
         {closed ? '' : urlList(crawler.urls)}
     </div>
 }
