@@ -8,13 +8,15 @@ export default class CrawlerStore {
         consultas.push(new CrawlerModel(id, keyword));
         this.setList(consultas);
     }
-    static updateItemStatus(id: string, status: string): void {
+    static updateItemStatus(id: string, status: string, urls?: string[]): void {
         const consultas = this.list();
         const consulta = consultas.find(c => c.id === id);
 
         if (!consulta) return;
 
         consulta.status = status;
+        consulta.urls = urls;
+
         this.setList(consultas);
     }
 

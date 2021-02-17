@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import CrawlerModel from "../../models/CrawlerModel";
 import Loading from "../Loading/Index";
 import CheckIcon from "../../assets/check.svg";
+import { CrawlerDisplay, UrlsDisplay } from "../../styled/Index";
 
 
 interface ResultItemProps {
@@ -9,7 +10,19 @@ interface ResultItemProps {
 }
 
 const ResultItem = ({ crawler }: ResultItemProps) => {
-    return <div>{crawler.keyword} {crawler.status === 'done' ? <img src={CheckIcon} alt="Done" height="25" /> : <Loading />} </div>
+    const [closed, setClosed] = useState(true);
+
+
+    return <div>
+        <CrawlerDisplay onClick={() => { setClosed(!closed); }} > {crawler.keyword} {crawler.status === 'done' ? <img src={CheckIcon} alt="Done" height="25" /> : <Loading />}</CrawlerDisplay>
+        {closed ? '' : urlList(crawler.urls)}
+    </div>
 }
 
+
+
 export default ResultItem;
+
+function urlList(urls?: string[]) {
+    return <UrlsDisplay>{urls?.length ? urls?.map(i => <div key={i}><a href={i}><small>{i}</small></a></div>) : <small>Nenhum resultado encontrado</small>}</UrlsDisplay>
+}

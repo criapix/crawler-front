@@ -11,20 +11,24 @@ interface ResultProps {
 const Result = ({ list }: ResultProps) => {
     const [internalList, setInternalList] = useState(list);
 
-    useEffect(() => {
-        setTimeout(() => {
-            const itens = CrawlerStore.list();
+    const update = () => {
+        const itens = CrawlerStore.list();
 
-            itens.forEach((i) => {
-                if (i.status === undefined || i.status === 'active') {
-                    new CrawlApiClient().getById(i.id).then((r) => {
-                        i.status = r.status;
-                        CrawlerStore.updateItemStatus(i.id, i.status);
-                    });
-                }
-            });
-            setInternalList(itens);
-        }, 10000);
+        itens.forEach((i) => {
+            if (i.status === undefined || i.status === 'active' || i.urls === undefined) {
+                new CrawlApiClient().getById(i.id).then((r) => {
+                    i.status = r.status;
+                    i.urls = r.urls;
+                    CrawlerStore.updateItemStatus(i.id, i.status, i.urls);
+                });
+            }
+        });
+        setInternalList(itens);
+    };
+
+
+    useEffect(() => {
+        setTimeout(update, 10000);
     });
 
     return <div>
