@@ -28,11 +28,20 @@ const Result = ({ list }: ResultProps) => {
 
 
     useEffect(() => {
-        setTimeout(update, 10000);
-    });
+        const interval = setInterval(() => {
+            update();
+        }, 10000);
+        return () => {
+            clearInterval(interval);
+        }
+    }, []);
+
+    useEffect(() => {
+        setInternalList(list);
+    }, [list])
 
     return <div>
-        {internalList.map(i => <ResultItem key={i.keyword} crawler={i} />)}
+        {internalList?.map(i => <ResultItem key={i.keyword} crawler={i} />)}
     </div>
 }
 

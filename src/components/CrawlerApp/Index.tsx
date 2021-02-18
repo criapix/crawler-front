@@ -11,11 +11,8 @@ const CrawlerApp = () => {
         new CrawlApiClient().post({ "keyword": keyword }).then(consulta => {
             CrawlerStore.addItem(consulta.id, keyword);
             setCrawlers(CrawlerStore.list());
-            window.location.href = window.location.href + '';
         });
     }
-
-    console.log('renderizou');
 
     return <div className="App">
         <Form onSend={onSend} />
