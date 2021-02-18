@@ -20,14 +20,10 @@ export default class CrawlerStore {
         this.setList(consultas);
     }
 
-    static deleteItem(consulta: CrawlerModel): void {
+    static deleteItem(id: string): void {
         const crawlers = this.list();
-
-        const index = crawlers.indexOf(consulta);
-        if (index > -1)
-            crawlers.splice(index, 1);
-
-        this.setList(crawlers);
+        const aux = crawlers.filter((c) => c.id !== id);
+        this.setList(aux);
     }
 
     static list(): CrawlerModel[] {
