@@ -6,7 +6,7 @@ const urlParte2 = 'app';
 const urlParte3 = 'axr';
 const urlParte4 = 'eng';
 
-export default class CrawlApiClient {
+export default class CrawlerApiClient {
     resource = '/crawl';
 
     baseUrl = `http://${urlParte1}${urlParte2}.${urlParte3}${urlParte4}.com:3000`;
