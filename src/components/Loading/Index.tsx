@@ -2,15 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 const Loading = () => {
-    return (
-        <Progress
-            style={{
-                width: 25,
-                height: 25,
-                color: "var(--base-color-primary)"
-            }}
-        />
-    );
+  return (
+    <Progress
+      style={{
+        width: 25,
+        height: 25,
+        color: "var(--base-color-primary)",
+      }}
+    />
+  );
 };
 
 const Progress = styled.progress`
